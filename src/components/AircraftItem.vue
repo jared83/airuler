@@ -1,11 +1,8 @@
 <template>
     <div class="aircraft-item" :id="'aircraft-'+aircraft.ident">
-        <!-- <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div> -->
         <div class="aircraft-id col">
                 <h1>{{ aircraft.ident }}</h1>
                 <p>({{ aircraft.type }})</p>
-            <!-- <inline-edit @value-accepted="updateID">
-            </inline-edit> -->
         </div>
     </div>
 </template>

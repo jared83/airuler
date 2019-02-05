@@ -17,7 +17,6 @@
 <script>
 import FlightItem from "./FlightItem.vue";
 import UtilTimeline from "./UtilTimeline";
-// import store from "./store";
 import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 export default {
   name: "FlightsList",
@@ -93,16 +92,11 @@ ul.flights-list {
   z-index: 100;
 }
 .flights-list > li {
-  /* margin: 7px 0; */
-  /* padding: 1rem; */
   border: 1px black solid;
-  /* border-radius: 5px; */
   box-shadow: 0px 0px 8px 1px #7990a7;
   background-color: rgb(27, 24, 41);
-  /* height: 7rem; */
 }
 .flights-day {
-  /* width: 400px; */
   display: table-cell;
   vertical-align: top;
   padding: 1rem;

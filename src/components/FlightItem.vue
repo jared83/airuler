@@ -181,7 +181,6 @@ export default {
             },
             set(departure) {
                 let secs = (departure.hours*60*60) + (departure.minutes*60)
-                // this.getFlights[this.flight.index].departuretime = secs
                 this.flight.departuretime = secs
             }
         },
@@ -196,19 +195,12 @@ export default {
             },
             set(arrival) {
                 let secs = (arrival.hours*60*60) + (arrival.minutes*60)
-                // this.getFlights[this.flight.index].arrivaltime = secs
                 this.flight.arrivaltime = secs
             }
         },
 
     },
     mounted(){
-        // this.getFlights[this.flight.index].departuretime = 10000
-        // this.departure = {
-        //     hours: this.arrival.hours,
-        //     minutes: this.arrival.minutes,
-        // }
-        // this.flight.ident = 'changed'
     }
 }
 </script>
@@ -243,14 +235,9 @@ export default {
         position: absolute;
         width: 100%;
         line-height: .8;
+        left: 0;
+        top: 5px;
     }
-    .origin {
-        /* left: 0;
-        bottom: 0; */
-    }
-    .departure {
-        /* right: 0;
-        bottom: 0 */
-    }
+
 
 </style>

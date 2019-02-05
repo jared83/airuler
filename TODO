@@ -10,3 +10,4 @@
 ☐ add new flight if idle time available
 ☐ remove flight
 ✔ style a bit @done(19-02-04 18:29)
+publish to github pages: git subtree push --prefix dist origin gh-pages

@@ -30,23 +30,6 @@ export default {
     getFlight: (state) => (flightID) => {
       return state.flightsj.filter(flight=> flight.id === flightID)[0];
     },
-    // getAircraftUtilisationPercentPerDay: (state, getters) => (dayNo) => {
-    //   const fpd = getters.getFlightsPerDay(dayNo).flights
-    //   const secsPer24h = (24 * 60 * 60)
-    //   const secsPer40min = (40 * 60)
-    //   const minTurnaround = (40 * 60)
-      
-    //   const secsInFlight = 
-    //     fpd.reduce( (totalSecs, flight, index) => {
-    //       const isLastFlightToday = (index === fpd.length-1)
-    //       const inFlight          = (flight.arrivaltime - flight.departuretime)
-    //       const turnaround        = isLastFlightToday ? minTurnaround : 
-    //                                   (fpd[index+1].departuretime - flight.arrivaltime);
-    //       return totalSecs += (inFlight + turnaround)
-    //       }, 0)
-    //   const secsIdle = secsPer24h - secsInFlight
-    //   return (secsInFlight)
-    // },
     getUtilisationPerDay: (state, getters) => (dayNo) => {
       let utilData            = []
       const fpd               = getters.getFlightsPerDay(dayNo).flights
@@ -87,13 +70,13 @@ export default {
       
       tm.setUTCDate(tm.getUTCDate()+dayOffset)
 
-      const date = tm.getTime()//{day: tm.getUTCDate(), month: tm.getUTCMonth(), year: tm.getUTCFullYear()}
+      const date = tm.getTime()
       
       tm.setUTCSeconds(flight.departuretime)
-      const dt = tm.getTime()// {h: tm.getUTCHours(), min: tm.getUTCMinutes()}
+      const dt = tm.getTime()
       
       tm.setUTCSeconds(flight.arrivaltime - flight.departuretime)
-      const at = tm.getTime() //{h: tm.getUTCHours(), min: tm.getUTCMinutes()}
+      const at = tm.getTime()
       
       return {
         time: {
@@ -105,7 +88,6 @@ export default {
     },
     getFlightDate: (state, getters) => (flight, dayOffset) => {
       const date = new Date(getters.getMidnightMilis)
-      // date.setUTCDate(date.getUTCDate()+dayOffset)
       date.setUTCDate(date.getUTCDate()+dayOffset)
       return date.getTime()
     },

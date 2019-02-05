@@ -138,8 +138,7 @@ p {
   position: fixed;
   top: 0;
   right: 10px;
-  opacity: .7;
-  color: rgb(65, 112, 102);
+  color: rgba(65, 112, 102, 0.851);
 }
 .if-key::after  {
   background-color: green;
