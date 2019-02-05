@@ -29,31 +29,35 @@ export default {
         },
     },
     mounted() {
-        let slotElem = this.$slots.default[0].elm
-        let s = window.getComputedStyle(slotElem)
-        this.slotStyle = {
-            color: s.color,
-            backgroundColor: s.backgroundColor,
-            lineHeight: s.lineHeight,
-            font: s.font,
-            display: 'block',
-            position: 'absolute',
-            top: '1px',
-            left: 0,
-            border: s.border,
-            outline: s.outline,
-            width: s.width,
-            height: s.fontSize,
-            margin: 0,
-            padding: s.padding,
-            overflow: 'visible',
-            textAlign: s.textAlign,
-        }
+        this.$nextTick().then(()=>{
+            let slotElem = this.$slots.default[0].elm
+            let s = window.getComputedStyle(slotElem)
+            this.slotStyle = {
+                color: s.color,
+                backgroundColor: s.backgroundColor,
+                lineHeight: s.lineHeight,
+                font: s.font,
+                display: 'block',
+                position: 'absolute',
+                top: '1px',
+                left: 0,
+                border: s.border,
+                outline: s.outline,
+                width: s.width,
+                height: s.fontSize,
+                margin: 0,
+                padding: s.padding,
+                overflow: 'visible',
+                textAlign: s.textAlign,
+            }
+        })
     },
     updated(){
-        let slotElem = this.$slots.default[0].elm
-        let s = window.getComputedStyle(slotElem)
-        this.slotStyle.width = s.width
+        this.$nextTick(()=>{
+            let slotElem = this.$slots.default[0].elm
+            let s = window.getComputedStyle(slotElem)
+            this.slotStyle.width = s.width
+        })
     },
     methods: {
         edit(editing){
@@ -77,10 +81,12 @@ export default {
             let timeDelimIdx = input.value.indexOf(':')
             switch (e.which) {
                 case 37:
-                    input.setSelectionRange(0, timeDelimIdx)
+                    if(timeDelimIdx !== -1)
+                        input.setSelectionRange(0, timeDelimIdx)
                     break
                 case 39:
-                    input.setSelectionRange(timeDelimIdx+1, input.value.length)
+                    if(timeDelimIdx !== -1)
+                        input.setSelectionRange(timeDelimIdx+1, input.value.length)
                     break
                 // case 9:
                 case 13:
