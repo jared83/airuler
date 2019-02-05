@@ -82,6 +82,10 @@ body {
   text-align: center;
   margin-top: 0px;
 }
+ul {
+  list-style: none;
+  padding: 0;
+}
 .airuler-container {
   position: relative;
   display: flex;
